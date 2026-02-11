@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="ChatBox.BLL/ChatBox.BLL.csproj" />
+  <Project Path="ChatBox.DAL/ChatBox.DAL.csproj" />
+  <Project Path="ChatBox.UI/ChatBox.UI.csproj" />
+</Solution>
