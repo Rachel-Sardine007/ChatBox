@@ -2,3 +2,39 @@
 @model ChatBox.UI.Pages.Account.LoginModel
 @{
 }
+
+
+<h2>Login</h2>
+
+<form method="post">
+<div>
+    <label asp-for="Username"></label><br />
+    <input asp-for="Username" />
+</div>
+
+<br />
+
+<div>
+    <label asp-for="Password"></label><br />
+    <input asp-for="Password" type="password" />
+</div>
+
+<br />
+
+<button type="submit">Login</button>
+
+</form>
+
+
+@if(!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <p style="color: red;">@Model.ErrorMessage</p>
+}
+
+<hr/>
+
+<p>
+    Har du inget konto? <a asp-page="/Account/Register">Registrera dig här</a>.
+</p>
+
+

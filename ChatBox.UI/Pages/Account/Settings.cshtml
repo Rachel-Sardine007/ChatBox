@@ -2,3 +2,73 @@
 @model ChatBox.UI.Pages.Account.SettingsModel
 @{
 }
+
+
+
+<h2>Settings</h2>
+
+<p>Här kan du byta användarnamn, byta lösenord eller ta bort konto.</p>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <p style="color:green">@Model.Message</p>
+}
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <p style="color:red">@Model.ErrorMessage</p>
+}
+
+<hr />
+
+
+<h3>Change username</h3>
+<form method="post" asp-page-handler="ChangeUsername">
+    <div>
+        <label asp-for="NewUsername"></label><br />
+        <input asp-for="NewUsername" />
+    </div>
+
+    <br />
+
+    <button type="submit">Save username</button>
+</form>
+
+<hr />
+
+<h3>Change password</h3>
+<form method="post" asp-page-handler="ChangePassword">
+    <div>
+        <label asp-for="CurrentPassword"></label><br />
+        <input asp-for="CurrentPassword" type="password" />
+    </div>
+
+    <br />
+
+    <div>
+        <label asp-for="NewPassword"></label><br />
+        <input asp-for="NewPassword" type="password" />
+    </div>
+
+    <br />
+
+    <button type="submit">Save password</button>
+</form>
+
+<hr />
+
+<h3>Delete account</h3>
+<p style="color:#b00020;">Varning: detta kan inte ångras.</p>
+
+<form method="post" asp-page-handler="DeleteAccount"
+      onsubmit="return confirm('Är du säker att du vill ta bort kontot?');">
+    <button type="submit" style="color:red;">Delete account</button>
+</form>
+
+<hr />
+
+<p>
+    <a asp-page="/Messages/Chat">Back to Chat</a> |
+    <a asp-page="/Account/Login">Back to Login</a>
+</p>
+ 

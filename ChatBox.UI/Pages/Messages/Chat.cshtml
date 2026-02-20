@@ -1,0 +1,52 @@
+﻿@page
+@model ChatBox.UI.Pages.Messages.ChatModel
+
+<h2>Chat</h2>
+<p>Write a message and press Send.</p>
+
+<form method="post">
+    <div>
+        <label asp-for="Text"></label><br />
+        <textarea asp-for="Text" rows="3" cols="60" placeholder="Write your message..."></textarea>
+    </div>
+
+    <br />
+
+    <button type="submit">Send</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <p style="color:red">@Model.ErrorMessage</p>
+}
+
+<hr />
+
+<h3>Messages</h3>
+
+@if (Model.Messages.Count == 0)
+{
+    <p>No messages yet.</p>
+}
+else
+{
+    foreach (var msg in Model.Messages)
+    {
+        <div style="
+            margin-bottom:12px;
+            padding:10px;
+            border:1px solid #ccc;
+            background-color:@(msg.IsMine ? "#e6f7ff" : "#f9f9f9");
+        ">
+            <strong>@(string.IsNullOrEmpty(msg.Username) ? "(deleted user)" : msg.Username)</strong><br />
+            <span>@msg.Text</span>
+        </div>
+    }
+}
+
+<hr />
+
+<p>
+    <a asp-page="/Account/Settings">Settings</a> |
+    <a asp-page="/Account/Logout">Logout</a>
+</p>
