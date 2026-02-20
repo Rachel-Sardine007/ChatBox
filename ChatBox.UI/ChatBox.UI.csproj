@@ -10,4 +10,8 @@
     <ProjectReference Include="..\ChatBox.BLL\ChatBox.BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Messages\" />
+  </ItemGroup>
+
 </Project>
